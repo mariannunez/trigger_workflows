@@ -45,7 +45,7 @@ jobs:
          workflow_file_name: dispatch_event.yml
          ref: main
          wait_interval: 10
-         client_payload: '{}'
+         client_payload: '{foo: "bar", BAR: "foo"}'
          propagate_failure: false
          trigger_workflow: true
          wait_workflow: true
