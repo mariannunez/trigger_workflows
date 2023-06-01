@@ -21,17 +21,30 @@ jobs:
              #https://api.github.com/repos/MarianaNun/postman-test/dispatches \
             #--data '{"event_type": "some_event", "client_payload": { "foo": "bar", "BAR": "foo" }}'
   
-      - name: Dispatch an action and get the run ID
-        uses: codex-/return-dispatch@v1
-        id: return_dispatch
-        with:
-          token: ${{ secrets.DISPATCH_TOKEN }}
-          ref: main
-          repo: postman-test
-          owner: MarianaNun
-          workflow: dispatch_event.yml
-          workflow_inputs: '{ "foo": "bar", "BAR": "foo" }'
-          workflow_timeout_seconds: 300
+#      - name: Dispatch an action and get the run ID
+#        uses: codex-/return-dispatch@v1
+#        id: return_dispatch
+#        with:
+#          token: ${{ secrets.DISPATCH_TOKEN }}
+#          ref: main
+#          repo: postman-test
+#          owner: MarianaNun
+#          workflow: dispatch_event.yml
+#          workflow_inputs: { "foo": "bar", "BAR": "foo" }
+#          workflow_timeout_seconds: 300
 
-      - name: Use the output run ID
-        run: echo ${{steps.return_dispatch.outputs.run_id}}
+#      - name: Use the output run ID
+#        run: echo ${{steps.return_dispatch.outputs.run_id}}
+
+      - uses: convictional/trigger-workflow-and-wait@v1.6.1
+        with:
+         owner: MarianaNun
+         repo: postman-test
+         github_token: ${{ secrets.DISPATCH_TOKEN }}
+         workflow_file_name: dispatch_event.yml
+         # ref: release-branch
+         wait_interval: 10
+         client_payload: '{ "foo": "bar", "BAR": "foo" }'
+         propagate_failure: false
+         trigger_workflow: true
+         wait_workflow: true
