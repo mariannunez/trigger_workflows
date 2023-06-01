@@ -19,4 +19,4 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.DISPATCH_TOKEN }}" \
             --request POST \
              https://api.github.com/repos/MarianaNun/postman-test/dispatches \
-            --data '{"event_type": "some_event", "client_payload": { "foo": "bar" }}'
+            --data '{"event_type": "some_event", "client_payload": { "foo": "bar", "BAR": "foo" }}'
