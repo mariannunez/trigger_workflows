@@ -43,9 +43,9 @@ jobs:
          repo: postman-test
          github_token: ${{ secrets.DISPATCH_TOKEN }}
          workflow_file_name: dispatch_event.yml
-         # ref: release-branch
+         ref: main
          wait_interval: 10
-         client_payload: '{"test": "true"}'
+         client_payload: '{}'
          propagate_failure: false
          trigger_workflow: true
          wait_workflow: true
