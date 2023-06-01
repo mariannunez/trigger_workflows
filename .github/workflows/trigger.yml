@@ -11,9 +11,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        repo: ['MarianaNun/postman-test.git']
     timeout-minutes: 5
     steps:
       - name: Dispatch to workflows
@@ -22,5 +19,5 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.DISPATCH_TOKEN }}" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             --request POST \
-             https://api.github.com/repos/${{ matrix.repo }}/dispatches \
+             https://api.github.com/repos/MarianaNun/postman-test.git/dispatches \
             --data '{"event_type": "some_event", "client_payload": { "foo": "bar" }}'
