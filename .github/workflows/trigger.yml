@@ -41,7 +41,7 @@ jobs:
          owner: MarianaNun
          repo: postman-test
          github_token: ${{ secrets.DISPATCH_TOKEN }}
-         workflow_file_name: dispatch_event.yml
+         #workflow_file_name: dispatch_event.yml
          # ref: release-branch
          wait_interval: 10
          client_payload: '{ "foo": "bar", "BAR": "foo" }'
