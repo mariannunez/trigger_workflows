@@ -45,7 +45,7 @@ jobs:
          workflow_file_name: dispatch_event.yml
          # ref: release-branch
          wait_interval: 10
-         client_payload: '{"test": "true"}'
+         client_payload: '{"foo": "true"}'
          propagate_failure: false
          trigger_workflow: true
          wait_workflow: true
