@@ -36,15 +36,16 @@ jobs:
 #      - name: Use the output run ID
 #        run: echo ${{steps.return_dispatch.outputs.run_id}}
 
+      - name: Dispatch an action and get the run ID
       - uses: convictional/trigger-workflow-and-wait@v1.6.1
         with:
          owner: MarianaNun
          repo: postman-test
          github_token: ${{ secrets.DISPATCH_TOKEN }}
-         #workflow_file_name: dispatch_event.yml
+         workflow_file_name: dispatch_event.yml
          # ref: release-branch
          wait_interval: 10
-         client_payload: '{ "foo": "bar", "BAR": "foo" }'
+         client_payload: '{"foo": "value1", "BAR": "value2"}'
          propagate_failure: false
          trigger_workflow: true
          wait_workflow: true
