@@ -15,6 +15,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - uses: actions/checkout@v2
+      - name: Print current branch
+        run: git branch
+      - name: Get PR Number
+        id: pr
+        run: echo "::set-output name=pr_number::$(git branch | grep 'HEAD detached at pull' | sed 's/.*pull\/\([0-9]*\)\/.*/\1/' | cut -f1 -d'/')"
+      - name: Print PR Number
+        run: echo "The PR number is ${{ steps.pr.outputs.pr_number }}"
       #- name: Dispatch to workflows
         #run: |
             #curl -H "Accept: application/vnd.github+json" \
@@ -47,7 +55,7 @@ jobs:
          workflow_file_name: dispatch_event.yml
          ref: main
          wait_interval: 10
-         client_payload: '{"foo": "bar", "BAR": "foo"}'
+         client_payload: '{"foo": "bar", "BAR": "https://rails-teespring-${{ steps.pr.outputs.pr_number }}"}'
          propagate_failure: false
          trigger_workflow: true
          wait_workflow: true
