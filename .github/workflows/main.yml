@@ -17,6 +17,7 @@ jobs:
         run: echo 'Parameter:' ${{ inputs.my_param }}
 
   invoke_reusable_workflow:
+    needs: [print_message]
     uses: ./.github/workflows/reusable.yml
     with:
       my_param: ${{ inputs.my_param }}
