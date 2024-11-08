@@ -14,4 +14,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo parameter
-        run: echo "Parameter received: ${{ inputs.my_param }}"
+        run: echo 'Parameter received:' ${{ inputs.my_param }}
