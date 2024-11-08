@@ -11,6 +11,6 @@ on:
 
 jobs:
   invoke_reusable_workflow:
-    uses: ./.github/workflows/resusable.yml
+    uses: ./.github/workflows/reusable.yml
     with:
       my_param: ${{ inputs.my_param }}
