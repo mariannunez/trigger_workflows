@@ -1,0 +1,16 @@
+# .github/workflows/main.yml
+name: Main Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      my_param:
+        description: 'my param'
+        required: true
+        default: 'Hello, main workflow!'
+
+jobs:
+  invoke_reusable_workflow:
+    uses: ./.github/workflows/resusable.yml
+    with:
+      my_param: ${{ inputs.my_param }}

@@ -1,0 +1,17 @@
+# .github/workflows/s.yml
+name: Reusable Workflow
+
+on:
+  workflow_call:
+    inputs:
+      my_param:
+        description: 'A parameter for the reusable workflow'
+        required: true
+        type: string
+
+jobs:
+  example_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo parameter
+        run: echo "Parameter received: ${{ inputs.my_param }}"
