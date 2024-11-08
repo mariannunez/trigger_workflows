@@ -10,6 +10,12 @@ on:
         default: 'Hello, main workflow!'
 
 jobs:
+  print_message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print parameter
+        run: echo 'Parameter:' ${{ inputs.my_param }}
+
   invoke_reusable_workflow:
     uses: ./.github/workflows/reusable.yml
     with:
